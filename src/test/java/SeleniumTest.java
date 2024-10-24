@@ -20,7 +20,7 @@ public class SeleniumTest {
     @Before
     public void setUp() {
         // Set up ChromeDriver path
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");//linux_64
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");//linux_64
 
         // Get file
         File file = new File("src/main/index.html");
