@@ -44,16 +44,18 @@ public class SeleniumTest {
     @Test
     public void testPageText() throws InterruptedException {
         //setup
-        WebElement speechPart1 = webDriver.findElement(By.id("opening"));
-        String opening = "To be, or not to be, that is the question:";
-        WebElement speechPart2 = webDriver.findElement(By.id("theRest"));
-        String theRest = "Whether 'tis nobler in the mind to suffer";
+    WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+    WebElement speechPart1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("opening")));
+    WebElement speechPart2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("theRest")));
+    String opening = "To be, or not to be, that is the question:";
+    String theRest = "Whether 'tis nobler in the mind to suffer";
 
-        Thread.sleep(6000);
+    // Assertions
+    Assert.assertEquals(opening, speechPart1.getText());
+    Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
+}
 
-        Assert.assertEquals(opening, speechPart1.getText());
-        Assert.assertEquals(theRest, speechPart2.getText().substring(0, 41));
     }
 
 
-}
+
